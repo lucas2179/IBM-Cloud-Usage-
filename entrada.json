@@ -1,0 +1,9 @@
+{
+    "apikey": "ibmapikey",
+    "account_id": "account_id",
+    "month": "2020-01",
+    "cos-apikey": "cos-apikey",
+    "siid": "service id",
+    "bucket": "bucket cos",
+    "endpoint": "endpoint"
+}
