@@ -18,4 +18,18 @@
 2 - No menu lateral, clique em "Configurações da Conta" <br>
 3 - Copie o ID da conta <br>
 
+# Endpoint do object storage
+1 - vá para o Dashboard do object storage<br>
+2 - Selecione o bucket desejado<br>
+3 - No menu lateral, clique em configuration<br>
+4 - E "Terminais", copie o endpoint Público, acrescentando https:// <br>
+
+#cos apikey e Service Id
+1 - No menu lateral, seleione "Credenciais de serviço"<br>
+2 - Clique em "Nova Credencial", dê um nome para a credencial, e selecione a função Manager<br>
+3 - Clique em incluir<br>
+4 - Clique em visualizar credenciais<br>
+5 - Copie o campo "apikey"<br>
+6 - Para o service id, copie o campo "iam_serviceid_crn"
+
 
