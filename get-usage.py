@@ -6,7 +6,7 @@ from ibm_botocore.client import Config
 import pandas as pd
 from datetime import date
 
-def main(dict)
+def main(dict):
 
 
 
