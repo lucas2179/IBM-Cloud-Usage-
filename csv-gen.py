@@ -63,4 +63,4 @@ def main(dict):
     df.to_csv(name, index=False)
     cos.upload_file(name,dict['bucket'],name)
     
-    return { 'message': 'Hello world' }
+    return { 'message': 'ok' }
