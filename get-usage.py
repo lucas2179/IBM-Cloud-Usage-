@@ -15,7 +15,7 @@ def main(dict):
 
     month = str(date.today())[:-3]
     authorization = 'Bearer '+ dict['token']
-    url = 'https://billing.cloud.ibm.com/v4/accounts/'+dict['account_id']+'/resource_instances/usage/'+month+'?_names=true'
+    url = 'https://billing.cloud.ibm.com/v4/accounts/'+dict['account_id']+'/usage/'+month+'?_names=true'
     headers = {
         'accept': 'application/json',
         'Authorization': authorization
