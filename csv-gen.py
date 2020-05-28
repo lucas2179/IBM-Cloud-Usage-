@@ -25,53 +25,38 @@ def main(dict):
         	ibm_auth_endpoint=auth_endpoint,
         	config=Config(signature_version='oauth'),
         	endpoint_url=service_endpoint)
-    colum = ['Service Name', 'Instance Name', 'Instance Id', 'Plan Name', 'Billable', 'Region', 'Resource Group', 'Organization Name', 'Currency', 'Metric', 'Usage Unit', 'Usage Quantity', 'Cost/unity', 'Price']
+    colum = ['Service Name', 'Plan Name', 'Plan Id', 'Currency', 'Plan cost', 'Plan Rated Cost', 'Metric', 'Unit', 'Quantity', 'Usage Rated Cost', 'Usage Cost', 'Month']
     table = {
     	'Service Name': [],
-    	'Instance Name': [],
-    	'Instance Id': [],
     	'Plan Name': [],
-    	'Region': [],
-    	'Resource Group': [],
-    	'Organization Name': [],
-    	'Billable': [],
+    	'Plan Id': [],
     	'Currency': [],
+    	'Plan cost': [],
+    	'Plan Rated Cost': [],
     	'Metric': [],
-    	'Usage Unit': [],
-    	'Usage Quantity': [],
-        'Cost/Unity': [],
-    	'Price': []
+    	'Unit': [],
+    	'Quantity': [],
+        'Usage Rated Cost': [],
+    	'Usage Cost': [],
+    	'Month': []
     }
-    
+    print(dict)
     data = dict['usage']
-    for p in data["resources"]:
-        for j in p['usage']:
-            
-            table['Service Name'].append(p['resource_name'])
-            table['Instance Name'].append(p['resource_instance_name'])
-            table['Instance Id'].append(p['resource_instance_id'])
-            table['Plan Name'].append(p['plan_name'])
-            table['Billable'].append(p['billable'])
-            table['Region'].append(p['region'])
-            try:
-                table['Resource Group'].append(p['resource_group_name'])
-            except:
-                table['Resource Group'].append('-')
-            try:
-                table['Organization Name'].append(p['organization_name'])
-            except:
-                table['Organization Name'].append('-')
-            table['Currency'].append(p['currency_code'])
-            table['Metric'].append(j['metric'])
-            table['Usage Unit'].append(j['unit'])
-            table['Usage Quantity'].append(j['quantity'])
-            try:
-                
-                table['Cost/Unity'].append(j['price'][0]['price'])
-            except:
-                table['Cost/Unity'].append('-')
-            table['Price'].append(j['rated_cost'])
-
+    for i in dict['usage']['resources']:
+        for j in i['plans']: 
+            for x in j['usage']: 
+                table['Service Name'].append(i['resource_name'])
+                table['Plan Name'].append(j['plan_name'])
+                table['Plan Id'].append(j['plan_id'])
+                table['Plan cost'].append(j['cost'])
+                table['Plan Rated Cost'].append(j['rated_cost'])
+                table['Metric'].append(x['metric'])
+                table['Unit'].append(x['unit'])
+                table['Quantity'].append(x['quantity'])
+                table['Usage Rated Cost'].append(x['rated_cost'])
+                table['Usage Cost'].append(x['cost'])
+                table['Currency'].append(dict['usage']['currency_code'])
+                table['Month'].append(dict['usage']['month'])
     print(table)
     df = pd.DataFrame(table, columns = colum)
     name = "usage"+str(date.today())+".csv"
